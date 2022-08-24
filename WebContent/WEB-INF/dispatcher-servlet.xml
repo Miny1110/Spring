@@ -20,4 +20,38 @@
 	class="org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping"/>
 <bean name="/test/msg.action" class="com.test.TestController"/>
 
+
+<!-- 
+alwaysUseFullPath가
+true : http://localhost/test/a.action처럼 나오고
+false : http://localhost/a.action처럼 나온다. 중간주소가 없다.
+ -->
+<bean id="handlerMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+	<property name="order" value="1"/>
+	<property name="alwaysUseFullPath" value="true"/>
+	<property name="mappings">
+		<props>
+			<prop key="/test/write.action">listFormController</prop>
+			<prop key="/test/write_ok.action">listController</prop>
+			<prop key="/test1/login.action">loginController</prop>
+		</props>
+	</property>
+</bean>
+
+
+<!-- LoginAuthenticatorImpl를 authenticator-ref 이름으로 객체 생성 -->
+<bean name="authenticator-ref" class="com.test1.LoginAuthenticatorImpl"/>
+<bean name="loginController" class="com.test1.LoginController">
+	<property name="authenticator" ref="authenticator-ref"/>
+	<property name="commandClass" value="com.test1.LoginCommand"/>
+	<property name="commandName" value="loginCommand"/>
+	<property name="formView" value="test1/login"/>
+</bean>
+
+
+<!-- listController는 메소드이기 때문에 객체를 생성해주어야 한다. -->
+<bean name="listFormController" class="com.test.ListFormController"/>
+<bean name="listController" class="com.test.ListController"/>
+
+
 </beans>
