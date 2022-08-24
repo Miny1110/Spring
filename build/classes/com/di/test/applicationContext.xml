@@ -19,9 +19,13 @@
 <!--  
 	<constructor-arg>:생성자
 	<property name="test">:메소드
+	<ref bean="testImpl2"/>:생성자에 testImpl2라는 객체를 넘겨줘라
+		다른 객체를 넘기고 싶으면 이 xml파일에서 객체명만 바꿔주면 된다.
+		다른 파일들은 수정할 필요가 없다. 의존성이 약화.
   -->
 
 
+	<!-- [오버로딩 생성자] -->
 	<bean id="testImpl1" class="com.di.test.TestImpl1">
 		<constructor-arg>
 			<value type="int">50</value>		
@@ -32,6 +36,7 @@
 	</bean>
 	
 	
+	<!-- String은 바로 value 적어주면 된다. -->
 	<bean id="testImpl2" class="com.di.test.TestImpl2">
 		<constructor-arg value="박신혜"/>
 		<constructor-arg>
@@ -41,6 +46,9 @@
 
 
 <!-- 
+		[기본생성자]
+	<bean id="testImpl2" class="com.di.test.TestImpl2"/>
+
 	<bean id="testService" class="com.di.test.TestService">
 		<constructor-arg>
 			<ref bean="testImpl2"/>
@@ -49,6 +57,8 @@
  -->	
   
 <!--   
+	property라서 testService의 메소드로 찾아간다. > setTest(Test test)
+
  	<bean id="testService" class="com.di.test.TestService">
  		<property name="test">
  			<ref bean="testImpl1"/>
@@ -57,7 +67,10 @@
   -->
  
  
-<!-- p: <property>,<constructor-arg> 로 속성을 정의하지 않고 간결한 표현을 제공하는 것 -->
+<!-- DB연결할 때 자주 사용. 스프링 자체의 객체가 아니라 외부 파일에 대한 객체를 만들 때
+	p: <property>,<constructor-arg> 로 속성을 정의하지 않고 간결한 표현을 제공하는 것 -->
+<!-- testImpl1의 기본/오버로딩생성자를 읽어와서 객체 생성
+	위에 어떤 생성자 불러오는게 적혀있는가에 따라 달라지는듯 -->
  	<bean id="testService" class="com.di.test.TestService" p:test-ref="testImpl1"/>
 
  
