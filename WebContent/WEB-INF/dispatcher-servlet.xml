@@ -15,4 +15,9 @@
     <property name="suffix" value=".jsp" /> 
 </bean>
 
+
+<bean id="beanNameUrlMapping" 
+	class="org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping"/>
+<bean name="/test/msg.action" class="com.test.TestController"/>
+
 </beans>
