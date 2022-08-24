@@ -34,7 +34,19 @@ false : http://localhost/a.action처럼 나온다. 중간주소가 없다.
 			<prop key="/test/write.action">listFormController</prop>
 			<prop key="/test/write_ok.action">listController</prop>
 			<prop key="/test1/login.action">loginController</prop>
+			<prop key="/test2/mem.action">memController</prop>
 		</props>
+	</property>
+</bean>
+
+<!-- test/mem의 인덱스는 순서대로 0-1-2 -->
+<bean name="memController" class="com.test2.MemController">
+	<property name="pages">
+		<list>
+			<value>test2/mem1</value>
+			<value>test2/mem2</value>
+			<value>test2/mem3</value>
+		</list>
 	</property>
 </bean>
 
