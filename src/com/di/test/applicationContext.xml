@@ -15,6 +15,12 @@
 		http://www.springframework.org/schema/util/spring-util-2.5.xsd">
 
 <!-- Inversion on Control(IoC: 제어의 역전) -->
+	
+<!--  
+	<constructor-arg>:생성자
+	<property name="test">:메소드
+  -->
+
 
 	<bean id="testImpl1" class="com.di.test.TestImpl1">
 		<constructor-arg>
@@ -32,12 +38,7 @@
 			<value type="int">37</value>
 		</constructor-arg>
 	</bean>
-	
- 
-<!--  
-	<constructor-arg>:생성자
-	<property name="test">:메소드
-  -->
+
 
 <!-- 
 	<bean id="testService" class="com.di.test.TestService">
@@ -55,6 +56,8 @@
  	</bean>
   -->
  
+ 
+<!-- p: <property>,<constructor-arg> 로 속성을 정의하지 않고 간결한 표현을 제공하는 것 -->
  	<bean id="testService" class="com.di.test.TestService" p:test-ref="testImpl1"/>
 
  

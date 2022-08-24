@@ -13,10 +13,13 @@ public class ResultMain {
 		
 		Resource res = new ClassPathResource(path);
 		
-		//스프링의 컨테이너를 생성
+		/**
+		 * 스프링의 컨테이너를 생성
+		 * BeanFactory: 외부 자원으로부터 설정 정볼르 읽어와 빈 객체 생성
+		 */
 		BeanFactory factory = new XmlBeanFactory(res);
 		
-		//스프링 컨테이너에서 bean객체를 호출
+		/**스프링 컨테이너에서 bean객체를 호출*/
 		TestService ob = (TestService)factory.getBean("testService");
 		
 		System.out.println(ob.getValue());
