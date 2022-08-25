@@ -84,6 +84,7 @@ false : http://localhost/a.action처럼 나온다. 중간주소가 없다.
 
 
 <!-- LoginAuthenticatorImpl를 authenticator-ref 이름으로 객체 생성 -->
+<!-- LoginCommand 클래스를 loginCommand 라는 이름으로 객체 생성 -->
 <bean name="authenticator-ref" class="com.test1.LoginAuthenticatorImpl"/>
 <bean name="loginController" class="com.test1.LoginController">
 	<property name="authenticator" ref="authenticator-ref"/>
