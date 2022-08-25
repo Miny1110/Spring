@@ -11,6 +11,7 @@
   </welcome-file-list>
   
  <!--  Spring 환경세팅 -->
+ <!-- *.action 주소가 오면 DispatcherServlet에 가서 읽어라 -->
   <servlet>
   	<servlet-name>dispatcher</servlet-name>
   	<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
@@ -23,9 +24,13 @@
   </servlet-mapping>
   
   
+  <!-- 콘솔 : applicationContext
+  		웹 : dispatcher-servlet -->
   <!-- ContextLoaderListener : dispatcher-servlet.xml을 읽는다. -->
+  <!-- 톰캣서버가 시작하면서 web.xml을 읽을 때 <servlet>태그를 읽고
+  그 다음에 <listener>를 읽으면 ContextLoaderListener가 dispatcher-servlet를 읽는다 -->
   <listener>
-  	<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+  	<listener-class>org.sprin gframework.web.context.ContextLoaderListener</listener-class>
   </listener>
   
   

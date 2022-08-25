@@ -10,12 +10,13 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd
 		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-2.5.xsd">
 
+<!-- 돌려줄 파일의 확장자를 정해둔 것 -->
 <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-    <property name="prefix" value="/" /> 
+    <property name="prefix" value="/" />  
     <property name="suffix" value=".jsp" /> 
 </bean>
 
-
+<!-- /test/msg.action 주소가 오면 com.test.TestController로 가라 -->
 <bean id="beanNameUrlMapping" 
 	class="org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping"/>
 <bean name="/test/msg.action" class="com.test.TestController"/>
