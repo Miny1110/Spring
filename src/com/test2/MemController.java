@@ -13,6 +13,7 @@ import org.springframework.validation.Errors;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.AbstractWizardFormController;
 
+/**AbstractWizardFormController : 순서대로 값을 받아내게끔 하는 컨트롤러*/
 public class MemController extends AbstractWizardFormController{
 	
 	public MemController() {
@@ -32,6 +33,8 @@ public class MemController extends AbstractWizardFormController{
 			if(mem.getSsn().equals("1234")) {
 				String str = mem.getName() + "님 이미 가입 되어있습니다";
 				
+				/**에러메세지를 통해 데이터를 넘기면 mem1에서 다음단계 버튼을 눌러도 다음으로 넘어가지 않는다.
+				 * 다음 단계를 진행하지 않는다는 점에서 request로 데이터 넘기는 것과 다르다.*/ 
 				errors.rejectValue("message", str);
 				
 				mem.setMessage(str);
