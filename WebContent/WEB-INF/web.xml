@@ -30,7 +30,7 @@
   <!-- 톰캣서버가 시작하면서 web.xml을 읽을 때 <servlet>태그를 읽고
   그 다음에 <listener>를 읽으면 ContextLoaderListener가 dispatcher-servlet를 읽는다 -->
   <listener>
-  	<listener-class>org.sprin gframework.web.context.ContextLoaderListener</listener-class>
+  	<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
   </listener>
   
   

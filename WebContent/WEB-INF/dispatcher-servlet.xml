@@ -22,13 +22,29 @@
 <bean name="/test/msg.action" class="com.test.TestController"/>
 
 
+<!-- 어노테이션 사용 설정 -->
+<!-- base-package : 특정 패키지에서만 쓰고싶으면 패키지의 이름을 쓰면 된다.
+					전체 패키지에서 쓰고싶으면 *을 쓰면 된다. -->
+<context:component-scan base-package="*" scoped-proxy="no"/>
+
+<!-- 어노테이션을 사용하기 위한 컨트롤러 등록 -->
+<bean 
+class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping"
+p:alwaysUseFullPath="true">
+	<property name="order" value="1"/>
+</bean>
+
+
+
 <!-- 
 alwaysUseFullPath가
 true : http://localhost/test/a.action처럼 나오고
 false : http://localhost/a.action처럼 나온다. 중간주소가 없다.
  -->
+<!-- <property name="order" value="2"/> : 
+ 			어노테이션과 이 맵핑이 동시에 존재할 때의 우선순위가 2라는 의미 -->
 <bean id="handlerMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
-	<property name="order" value="1"/>
+	<property name="order" value="2"/>
 	<property name="alwaysUseFullPath" value="true"/>
 	<property name="mappings">
 		<props>
